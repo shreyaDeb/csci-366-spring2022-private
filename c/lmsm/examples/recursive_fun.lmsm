@@ -1,0 +1,9 @@
+          INP
+          CALL PRINTDOWN
+          HLT
+PRINTDOWN OUT
+          SPUSHI 1
+          SSUB
+          BRZ DONE
+          CALL PRINTDOWN
+DONE      RET

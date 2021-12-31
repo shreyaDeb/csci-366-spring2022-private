@@ -1,0 +1,7 @@
+       INP
+       CALL SQUARE
+       OUT
+       HLT
+SQUARE SDUP
+       SMUL
+       RET
