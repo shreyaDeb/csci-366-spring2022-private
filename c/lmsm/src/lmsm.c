@@ -149,10 +149,10 @@ void lmsm_cap_accumulator_value(lmsm *our_little_machine){
 
 void lmsm_step(lmsm *our_little_machine)
 {
-    int current_inst = our_little_machine->[our_little_machine->program_counter];
-    our_little_machine->current_instruction = current_inst;
-    our_little_machine->program_counter++;
-    lmsm_exec_instruction(our_little_machine, current_inst);
+//    int current_inst = our_little_machine->[our_little_machine->program_counter];
+//    our_little_machine->current_instruction = current_inst;
+//    our_little_machine->program_counter++;
+//    lmsm_exec_instruction(our_little_machine, current_inst);
 
 }
 
