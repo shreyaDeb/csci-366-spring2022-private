@@ -135,7 +135,9 @@ void lmsm_i_halt(lmsm *our_little_machine)
     our_little_machine->status = STATUS_HALTED;
 }
 
-void lmsm_i_branch_unconditional(lmsm *our_little_machine, int location) {
+void lmsm_i_branch_unconditional(lmsm *our_little_machine, int location)
+{
+
 }
 
 void lmsm_i_branch_if_zero(lmsm *our_little_machine, int location) {
@@ -144,7 +146,18 @@ void lmsm_i_branch_if_zero(lmsm *our_little_machine, int location) {
 void lmsm_i_branch_if_positive(lmsm *our_little_machine, int location) {
 }
 
-void lmsm_cap_accumulator_value(lmsm *our_little_machine){
+void lmsm_cap_accumulator_value(lmsm *our_little_machine)
+{
+    if(our_little_machine->accumulator->value>999)
+    {
+        our_little_machine->accumulator->value = 999;
+    }
+    else if(our_little_machine->accumulator->value < -999)
+    {
+        our_little_machine->accumulator->value = -999;
+    }
+
+
 }
 
 void lmsm_step(lmsm *our_little_machine)
