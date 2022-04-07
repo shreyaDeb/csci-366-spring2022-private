@@ -30,7 +30,13 @@ void lmsm_i_push(lmsm *our_little_machine)
     our_little_machine->accumulator = new_accumulator;
 }
 
-void lmsm_i_pop(lmsm *our_little_machine) {
+void lmsm_i_pop(lmsm *our_little_machine)
+{
+    lmsm_stack *current_accumulator = our_little_machine->accumulator;
+    lmsm_stack *new_accumulator = malloc(sizeof(lmsm_stack));
+    new_accumulator->value = 0;
+    new_accumulator->next = current_accumulator;
+    our_little_machine->accumulator->value = current_accumulator;
 }
 
 void lmsm_i_dup(lmsm *our_little_machine)
@@ -103,13 +109,19 @@ void lmsm_i_smul(lmsm *our_little_machine) {
 void lmsm_i_sdiv(lmsm *our_little_machine) {
 }
 
-void lmsm_i_out(lmsm *our_little_machine) {
+void lmsm_i_out(lmsm *our_little_machine)
+{
+    //our_little_machine->accumulator->value += 10;
+    //our_little_machine->accumulator->value = our_little_machine-> output_buffer;
 }
 
-void lmsm_i_inp(lmsm *our_little_machine) {
+void lmsm_i_inp(lmsm *our_little_machine)
+{
 }
 
-void lmsm_i_load(lmsm *our_little_machine, int location) {
+void lmsm_i_load(lmsm *our_little_machine, int location)
+{
+    our_little_machine->accumulator->value = our_little_machine->memory[location];
 }
 
 void lmsm_i_add(lmsm *our_little_machine, int location)
@@ -122,7 +134,9 @@ void lmsm_i_sub(lmsm *our_little_machine, int location)
     our_little_machine->accumulator->value -= our_little_machine->memory[location];
 }
 
-void lmsm_i_load_immediate(lmsm *our_little_machine, int value) {
+void lmsm_i_load_immediate(lmsm *our_little_machine, int value)
+{
+    our_little_machine->accumulator->value = our_little_machine->accumulator->value + 99;
 }
 
 void lmsm_i_store(lmsm *our_little_machine, int location)
@@ -132,18 +146,32 @@ void lmsm_i_store(lmsm *our_little_machine, int location)
 
 void lmsm_i_halt(lmsm *our_little_machine)
 {
-    our_little_machine->status = STATUS_HALTED;
+    our_little_machine->accumulator->value += 10;
+    our_little_machine->accumulator->value = our_little_machine->status = STATUS_HALTED;
 }
 
 void lmsm_i_branch_unconditional(lmsm *our_little_machine, int location)
 {
-
+    our_little_machine->program_counter +=20;
 }
 
-void lmsm_i_branch_if_zero(lmsm *our_little_machine, int location) {
+void lmsm_i_branch_if_zero(lmsm *our_little_machine, int location)
+{
+    if(our_little_machine->accumulator->value == 0)
+    {
+        our_little_machine->memory[location] = our_little_machine->current_instruction;
+        our_little_machine->program_counter +=20;
+    }
 }
 
-void lmsm_i_branch_if_positive(lmsm *our_little_machine, int location) {
+
+void lmsm_i_branch_if_positive(lmsm *our_little_machine, int location)
+{
+    if(our_little_machine->accumulator->value <= 10)
+    {
+        our_little_machine->memory[location] = our_little_machine->current_instruction;
+        our_little_machine->program_counter +=20;
+    }
 }
 
 void lmsm_cap_accumulator_value(lmsm *our_little_machine)
