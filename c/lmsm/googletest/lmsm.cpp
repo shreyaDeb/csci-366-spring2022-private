@@ -135,7 +135,8 @@ TEST(lmsm_machine_suite,test_load_immediate_instruction){
     lmsm_delete(the_machine);
 }
 
-//TODO
+//STACKS//
+
 TEST(lmsm_machine_suite,test_push_instruction){
     lmsm *the_machine = lmsm_create();
     the_machine->accumulator->value = 10;
