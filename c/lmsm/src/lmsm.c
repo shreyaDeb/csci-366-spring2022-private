@@ -72,6 +72,7 @@ void lmsm_i_sadd(lmsm *our_little_machine)
     lmsm_stack *current = our_little_machine->accumulator;
     lmsm_stack *next = current->next;
     lmsm_stack *new = malloc(sizeof(lmsm_stack));
+
     new->value = current->value + next->value;
     new->next = next->next;
     our_little_machine->accumulator = new;
@@ -89,8 +90,9 @@ void lmsm_i_ssub(lmsm *our_little_machine)
     lmsm_stack *current = our_little_machine->accumulator;
     lmsm_stack *next = current->next;
     lmsm_stack *new = malloc(sizeof(lmsm_stack));
-    new->value =next->value - current->value;
-    new->next = current->next;
+
+    new->value = next->value - current->value;
+    new->next = new->next;
     our_little_machine->accumulator = new;
 
     free(current);
