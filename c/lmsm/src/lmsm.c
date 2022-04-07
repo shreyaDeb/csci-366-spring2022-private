@@ -121,10 +121,40 @@ void lmsm_i_smax(lmsm *our_little_machine)
 void lmsm_i_smin(lmsm *our_little_machine) {
 }
 
-void lmsm_i_smul(lmsm *our_little_machine) {
+void lmsm_i_smul(lmsm *our_little_machine)
+{
+    if (!check_stack(our_little_machine))
+    {
+        return;
+    }
+    lmsm_stack *current = our_little_machine->accumulator;
+    lmsm_stack *next = current->next;
+    lmsm_stack *new = malloc(sizeof(lmsm_stack));
+
+    new->value = next->value * current->value;
+    new->next = new->next;
+    our_little_machine->accumulator = new;
+
+    free(current);
+    free(next);
 }
 
-void lmsm_i_sdiv(lmsm *our_little_machine) {
+void lmsm_i_sdiv(lmsm *our_little_machine)
+{
+    if (!check_stack(our_little_machine))
+    {
+        return;
+    }
+    lmsm_stack *current = our_little_machine->accumulator;
+    lmsm_stack *next = current->next;
+    lmsm_stack *new = malloc(sizeof(lmsm_stack));
+
+    new->value = next->value / current->value;
+    new->next = new->next;
+    our_little_machine->accumulator = new;
+
+    free(current);
+    free(next);
 }
 
 void lmsm_i_out(lmsm *our_little_machine)
