@@ -5,62 +5,32 @@ Running main() from /home/carson/Projects/msu/csci-366-spring2022/grading/script
 [ RUN      ] lmsm_machine_suite.test_add_instruction_works
 [       OK ] lmsm_machine_suite.test_add_instruction_works (0 ms)
 [ RUN      ] lmsm_machine_suite.test_add_instruction_properly_caps_values
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:20: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 1005
-  999
-[  FAILED  ] lmsm_machine_suite.test_add_instruction_properly_caps_values (0 ms)
+[       OK ] lmsm_machine_suite.test_add_instruction_properly_caps_values (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sub_instruction_works
 [       OK ] lmsm_machine_suite.test_sub_instruction_works (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sub_instruction_properly_caps_values
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:38: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: -1005
-  -999
-[  FAILED  ] lmsm_machine_suite.test_sub_instruction_properly_caps_values (0 ms)
+[       OK ] lmsm_machine_suite.test_sub_instruction_properly_caps_values (0 ms)
 [ RUN      ] lmsm_machine_suite.test_store_instruction_works
 [       OK ] lmsm_machine_suite.test_store_instruction_works (0 ms)
 [ RUN      ] lmsm_machine_suite.test_load_instruction_works
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:55: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 0
-  10
-[  FAILED  ] lmsm_machine_suite.test_load_instruction_works (0 ms)
+[       OK ] lmsm_machine_suite.test_load_instruction_works (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_instruction_works
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:63: Failure
-Expected equality of these values:
-  the_machine->program_counter
-    Which is: 0
-  20
-[  FAILED  ] lmsm_machine_suite.test_branch_instruction_works (0 ms)
+[       OK ] lmsm_machine_suite.test_branch_instruction_works (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:72: Failure
-Expected equality of these values:
-  the_machine->program_counter
-    Which is: 0
-  20
-[  FAILED  ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (0 ms)
+[       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero
 [       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:90: Failure
-Expected equality of these values:
-  the_machine->program_counter
-    Which is: 0
-  20
-[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero (0 ms)
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:99: Failure
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:108: Failure
 Expected equality of these values:
   the_machine->program_counter
-    Which is: 0
-  20
-[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive (0 ms)
-[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
-[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive (0 ms)
+    Which is: 20
+  0
+[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive (0 ms)
 [ RUN      ] lmsm_machine_suite.test_output_instruction
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:117: Failure
 Expected equality of these values:
@@ -71,23 +41,18 @@ Expected equality of these values:
 [ RUN      ] lmsm_machine_suite.test_halt_instruction
 [       OK ] lmsm_machine_suite.test_halt_instruction (0 ms)
 [ RUN      ] lmsm_machine_suite.test_load_immediate_instruction
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:134: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 0
-  99
-[  FAILED  ] lmsm_machine_suite.test_load_immediate_instruction (0 ms)
+[       OK ] lmsm_machine_suite.test_load_immediate_instruction (0 ms)
 [ RUN      ] lmsm_machine_suite.test_push_instruction
 [       OK ] lmsm_machine_suite.test_push_instruction (0 ms)
 [ RUN      ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:156: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:157: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 0
   10
 [  FAILED  ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:165: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:166: Failure
 Expected equality of these values:
   the_machine->status
     Which is: 2
@@ -95,77 +60,39 @@ Expected equality of these values:
     Which is: 1
 [  FAILED  ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
 [ RUN      ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:174: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 1989645424
-  10
-[  FAILED  ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack (0 ms)
+[       OK ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:185: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 1989647690
-  20
-[  FAILED  ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack (0 ms)
+[       OK ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:195: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 1989648180
-  999
-[  FAILED  ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values (0 ms)
+[       OK ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts
 [       OK ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:214: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: -1989649718
-  0
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack (0 ms)
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:225: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: -1000
-  -999
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values (0 ms)
+[       OK ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values (0 ms)
 [ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:237: Failure
-Expected equality of these values:
-  the_machine->accumulator->next
-    Which is: 0x55b17697a540
-  nullptr
-    Which is: (nullptr)
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order (0 ms)
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order (0 ms)
 [ RUN      ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts
 [       OK ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:257: Failure
 Expected equality of these values:
-  the_machine->accumulator->next
-    Which is: 0x55b17697bc80
-  nullptr
-    Which is: (nullptr)
+  the_machine->accumulator->value
+    Which is: 10
+  20
 [  FAILED  ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:265: Failure
-Expected equality of these values:
-  the_machine->status
-    Which is: 2
-  machine_status::STATUS_HALTED
-    Which is: 1
-[  FAILED  ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[       OK ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:276: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:277: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 20
   10
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:285: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:286: Failure
 Expected equality of these values:
   the_machine->status
     Which is: 2
@@ -173,21 +100,21 @@ Expected equality of these values:
     Which is: 1
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:296: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:297: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 20
   200
-[  FAILED  ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack (1 ms)
+[  FAILED  ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smul_instruction_properly_caps_values
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:307: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:308: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 20
   999
 [  FAILED  ] lmsm_machine_suite.test_smul_instruction_properly_caps_values (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:316: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:317: Failure
 Expected equality of these values:
   the_machine->status
     Which is: 2
@@ -195,14 +122,14 @@ Expected equality of these values:
     Which is: 1
 [  FAILED  ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:327: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:328: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 10
   2
 [  FAILED  ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:336: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:337: Failure
 Expected equality of these values:
   the_machine->status
     Which is: 2
@@ -210,21 +137,21 @@ Expected equality of these values:
     Which is: 1
 [  FAILED  ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_call_instruction_pushes_next_address_onto_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:350: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:351: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 22
   0
 [  FAILED  ] lmsm_machine_suite.test_call_instruction_pushes_next_address_onto_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_return_instruction_returns_to_address_on_top_of_call_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:366: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:367: Failure
 Expected equality of these values:
   the_machine->accumulator->value
     Which is: 22
   0
 [  FAILED  ] lmsm_machine_suite.test_return_instruction_returns_to_address_on_top_of_call_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:389: Failure
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:390: Failure
 Expected equality of these values:
   the_machine->program_counter
     Which is: 0
@@ -236,27 +163,13 @@ Expected equality of these values:
 
 [----------] Global test environment tear-down
 [==========] 39 tests from 1 test suite ran. (1 ms total)
-[  PASSED  ] 10 tests.
-[  FAILED  ] 29 tests, listed below:
-[  FAILED  ] lmsm_machine_suite.test_add_instruction_properly_caps_values
-[  FAILED  ] lmsm_machine_suite.test_sub_instruction_properly_caps_values
-[  FAILED  ] lmsm_machine_suite.test_load_instruction_works
-[  FAILED  ] lmsm_machine_suite.test_branch_instruction_works
-[  FAILED  ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero
-[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero
-[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive
+[  PASSED  ] 24 tests.
+[  FAILED  ] 15 tests, listed below:
+[  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
 [  FAILED  ] lmsm_machine_suite.test_output_instruction
-[  FAILED  ] lmsm_machine_suite.test_load_immediate_instruction
 [  FAILED  ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
 [  FAILED  ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
-[  FAILED  ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack
-[  FAILED  ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack
-[  FAILED  ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values
-[  FAILED  ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order
 [  FAILED  ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack
-[  FAILED  ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
 [  FAILED  ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack
@@ -268,4 +181,4 @@ Expected equality of these values:
 [  FAILED  ] lmsm_machine_suite.test_return_instruction_returns_to_address_on_top_of_call_stack
 [  FAILED  ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
 
-29 FAILED TESTS
+15 FAILED TESTS
