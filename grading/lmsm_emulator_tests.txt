@@ -45,20 +45,9 @@ Expected equality of these values:
 [ RUN      ] lmsm_machine_suite.test_push_instruction
 [       OK ] lmsm_machine_suite.test_push_instruction (0 ms)
 [ RUN      ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:157: Failure
-Expected equality of these values:
-  the_machine->accumulator->value
-    Which is: 0
-  10
-[  FAILED  ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack (0 ms)
+[       OK ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:166: Failure
-Expected equality of these values:
-  the_machine->status
-    Which is: 2
-  machine_status::STATUS_HALTED
-    Which is: 1
-[  FAILED  ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
+[       OK ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
 [ RUN      ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack
 [       OK ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack
@@ -127,7 +116,7 @@ Expected equality of these values:
   the_machine->accumulator->value
     Which is: 10
   2
-[  FAILED  ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack (0 ms)
+[  FAILED  ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack (1 ms)
 [ RUN      ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:337: Failure
 Expected equality of these values:
@@ -163,12 +152,10 @@ Expected equality of these values:
 
 [----------] Global test environment tear-down
 [==========] 39 tests from 1 test suite ran. (1 ms total)
-[  PASSED  ] 24 tests.
-[  FAILED  ] 15 tests, listed below:
+[  PASSED  ] 26 tests.
+[  FAILED  ] 13 tests, listed below:
 [  FAILED  ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
 [  FAILED  ] lmsm_machine_suite.test_output_instruction
-[  FAILED  ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
-[  FAILED  ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
 [  FAILED  ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
@@ -181,4 +168,4 @@ Expected equality of these values:
 [  FAILED  ] lmsm_machine_suite.test_return_instruction_returns_to_address_on_top_of_call_stack
 [  FAILED  ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
 
-15 FAILED TESTS
+13 FAILED TESTS

@@ -8,13 +8,9 @@ Scanning dependencies of target lmsm
 [ 43%] Built target lmsm
 [ 52%] Built target gtest
 [ 60%] Built target gtest_main
-Scanning dependencies of target lmsm_tests
-[ 65%] Building CXX object googletest/CMakeFiles/lmsm_tests.dir/lmsm.cpp.o
-[ 69%] Linking CXX executable lmsm_tests
+[ 65%] Linking CXX executable lmsm_tests
 [ 73%] Built target lmsm_tests
-Scanning dependencies of target lmsm_emulator_tests
-[ 78%] Building CXX object googletest/CMakeFiles/lmsm_emulator_tests.dir/lmsm.cpp.o
-[ 82%] Linking CXX executable lmsm_emulator_tests
+[ 78%] Linking CXX executable lmsm_emulator_tests
 [ 82%] Built target lmsm_emulator_tests
 [ 91%] Built target gmock
 [100%] Built target gmock_main
