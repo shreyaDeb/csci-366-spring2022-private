@@ -9,6 +9,22 @@
 //  Instruction Implementation
 //======================================================
 
+int check_stack(lmsm *our_little_machine) {
+    lmsm_stack *current = our_little_machine->accumulator;
+    if (current == NULL) {
+        our_little_machine->status = STATUS_HALTED;
+        our_little_machine->error_code = ERROR_EMPTY_STACK;
+        return 0;
+    }
+    lmsm_stack *next = current->next;
+    if (next == NULL) {
+        our_little_machine->status = STATUS_HALTED;
+        our_little_machine->error_code = ERROR_EMPTY_STACK;
+        return 0;
+    }
+    return 1;
+}
+
 void lmsm_i_call(lmsm *our_little_machine)
 {
 //    lmsm_stack *call = our_little_machine->call_stack;
@@ -32,11 +48,12 @@ void lmsm_i_push(lmsm *our_little_machine)
 
 void lmsm_i_pop(lmsm *our_little_machine)
 {
-    lmsm_stack *current_accumulator = our_little_machine->accumulator;
-    lmsm_stack *new_accumulator = malloc(sizeof(lmsm_stack));
-    new_accumulator->value = 0;
-    new_accumulator->next = current_accumulator;
-    our_little_machine->accumulator = new_accumulator;
+    if (!check_stack(our_little_machine)) {
+        return;
+    }
+    lmsm_stack *current = our_little_machine->accumulator;
+    our_little_machine->accumulator = our_little_machine->accumulator->next;
+    free(current);
 }
 
 void lmsm_i_dup(lmsm *our_little_machine)
@@ -47,23 +64,6 @@ void lmsm_i_dup(lmsm *our_little_machine)
     new_accumulator->next = current_accumulator;
     our_little_machine->accumulator = new_accumulator;
 }
-
-int check_stack(lmsm *our_little_machine) {
-    lmsm_stack *current = our_little_machine->accumulator;
-    if (current == NULL) {
-        our_little_machine->status = STATUS_HALTED;
-        our_little_machine->error_code = ERROR_EMPTY_STACK;
-        return 0;
-    }
-    lmsm_stack *next = current->next;
-    if (next == NULL) {
-        our_little_machine->status = STATUS_HALTED;
-        our_little_machine->error_code = ERROR_EMPTY_STACK;
-        return 0;
-    }
-    return 1;
-}
-
 void lmsm_i_sadd(lmsm *our_little_machine)
 {
     if (!check_stack(our_little_machine)) {
