@@ -27,20 +27,18 @@ int check_stack(lmsm *our_little_machine) {
 
 void lmsm_i_call(lmsm *our_little_machine)
 {
-    if (!check_stack(our_little_machine)) {
-        return;
-    }
-    our_little_machine->accumulator->value = 0;
-    our_little_machine->program_counter = 22;
-    our_little_machine->call_stack->value = 3;
+    int value = our_little_machine->accumulator->value;
+    int pc = our_little_machine->program_counter;
+    our_little_machine->accumulator = our_little_machine->accumulator->next;
+    our_little_machine->program_counter = value;
+    our_little_machine->call_stack->value = pc;
 }
 
 void lmsm_i_return(lmsm *our_little_machine)
 {
-    if (!check_stack(our_little_machine)) {
-        return;
-    }
-    our_little_machine->program_counter = 3;
+    int value = our_little_machine->call_stack->value;
+
+    our_little_machine->program_counter = value;
     our_little_machine->call_stack->value = 0;
 }
 
