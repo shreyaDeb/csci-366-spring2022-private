@@ -118,8 +118,10 @@ void lmsm_i_smax(lmsm *our_little_machine)
     if(stackNext < stackTop)
     {
         new->value= stackTop;
+        new->next = our_little_machine->accumulator->value;
     }
     our_little_machine->accumulator = new;
+    our_little_machine->accumulator->next = NULL;
     free(current);
 }
 
