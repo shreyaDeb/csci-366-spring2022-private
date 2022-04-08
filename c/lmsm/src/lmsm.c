@@ -248,7 +248,6 @@ void lmsm_cap_accumulator_value(lmsm *our_little_machine)
         our_little_machine->accumulator->value = -999;
     }
 
-
 }
 
 void lmsm_step(lmsm *our_little_machine)
