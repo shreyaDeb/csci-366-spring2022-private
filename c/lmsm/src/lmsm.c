@@ -131,13 +131,19 @@ void lmsm_i_smin(lmsm *our_little_machine)
     {
         return;
     }
-    lmsm_stack *current = our_little_machine->accumulator->value;
-    lmsm_stack  *next = our_little_machine->accumulator->next;
-    if (our_little_machine->accumulator < our_little_machine->accumulator->next)
+    lmsm_stack *current = our_little_machine->accumulator;
+    lmsm_stack *next = current->next;
+    lmsm_stack *new = malloc(sizeof(lmsm_stack));
+    if(current->value <= next->value)
     {
-        our_little_machine->accumulator = current;
+        new->value = next->value;
     }
-    free(next);
+    else
+    {
+        new->value = next->value;
+    }
+    our_little_machine->accumulator = new;
+    free(current);
 }
 
 void lmsm_i_smul(lmsm *our_little_machine)
