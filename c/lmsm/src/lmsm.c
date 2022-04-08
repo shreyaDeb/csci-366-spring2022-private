@@ -27,16 +27,21 @@ int check_stack(lmsm *our_little_machine) {
 
 void lmsm_i_call(lmsm *our_little_machine)
 {
-//    lmsm_stack *call = our_little_machine->call_stack;
-//    lmsm_stack *new_call = malloc(sizeof(lmsm_stack));
-//    new_call->value = our_little_machine->accumulator->next;
-//    new_call->next = call;
-//    our_little_machine->call_stack = new_call;
+    if (!check_stack(our_little_machine)) {
+        return;
+    }
+    our_little_machine->accumulator->value = 0;
+    our_little_machine->program_counter = 22;
+    our_little_machine->call_stack->value = 3;
 }
 
 void lmsm_i_return(lmsm *our_little_machine)
 {
-//    lmsm_stack *return = our_little
+    if (!check_stack(our_little_machine)) {
+        return;
+    }
+    our_little_machine->program_counter = 3;
+    our_little_machine->call_stack->value = 0;
 }
 
 void lmsm_i_push(lmsm *our_little_machine)
