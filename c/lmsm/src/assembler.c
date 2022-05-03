@@ -156,10 +156,58 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
     int value_for_instruction = instruction->value;
     if (strcmp("ADD", instruction->instruction) == 0) {
         result->code[instruction->offset] = 100 + value_for_instruction;
+    } else if (strcmp("SUB", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 200 + value_for_instruction;
+    } else if (strcmp("STA", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 300 + value_for_instruction;
+    } else if (strcmp("LDI", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 400 + value_for_instruction;
+    } else if (strcmp("LDA", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 500 + value_for_instruction;
+    } else if (strcmp("BRA", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 600 + value_for_instruction;
+    } else if (strcmp("BRZ", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 700 + value_for_instruction;
+    } else if (strcmp("BRP", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 800 + value_for_instruction;
+    } else if (strcmp("INP", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 901;
+    } else if (strcmp("OUT", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 902;
+    } else if (strcmp("HALT", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 000;
+    } else if (strcmp("COB", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 000;
+    } else if (strcmp("DAT", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 000 + value_for_instruction;
+    } else if (strcmp("SPUSH", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 920;
+        result->code[instruction->offset+1] = 401;
+    } else if (strcmp("SPOP", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 921;
+    } else if (strcmp("SDUP", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 922;
+    } else if (strcmp("SADD", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 923;
+    } else if (strcmp("SSUB", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 924;
+    } else if (strcmp("SMAX", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 925;
+    } else if (strcmp("SMIN", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 926;
+    } else if (strcmp("SMUL", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 927;
+    } else if (strcmp("SDIV", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 928;
+    } else if (strcmp("CALL", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 920;
+        result->code[instruction->offset+1] = 401;
+        result->code[instruction->offset+2] = 910;
+    } else if (strcmp("RET", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 911;
     } else {
         result->code[instruction->offset] = 0;
     }
-
 }
 
 void asm_gen_code(compilation_result * result) {

@@ -14,14 +14,20 @@ public class Sorter {
     }
 
     public String sort() {
-      return "";
+        String [] split = _strings.split("\n|\r\n");
+        Arrays.sort(split);
+        return String.join("\n", split);
     }
 
     public String reverseSort() {
-      return "";
+        String [] split = _strings.split("\n|\r\n");
+        Arrays.sort(split, Collections.reverseOrder());
+        return String.join("\n", split);
     }
 
     public String parallelSort() {
-      return "";
+        String [] split = _strings.split("\n|\r\n");
+        Arrays.parallelSort(split);
+        return String.join("\n", split);
     }
 }
