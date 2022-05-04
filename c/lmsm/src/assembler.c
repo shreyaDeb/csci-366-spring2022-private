@@ -39,7 +39,7 @@ const int ARG_INSTRUCTION_COUNT = 11;
 //======================================================
 
 instruction * asm_make_instruction(char* type, char *label, char *label_reference, int value, instruction * predecessor) {
-    instruction *new_instruction = calloc(1, sizeof( instruction));
+    instruction *new_instruction = calloc(1, sizeof(instruction));
     new_instruction->instruction = type;
     new_instruction->label = label;
     new_instruction->label_reference = label_reference;
@@ -50,13 +50,16 @@ instruction * asm_make_instruction(char* type, char *label, char *label_referenc
     if (predecessor != NULL) {
         predecessor->next = new_instruction;
         new_instruction->offset = predecessor->offset + predecessor->slots;
-    } else if(new_instruction->instruction == "SPUSHI"){
-        new_instruction->slots = 2;
-    } else if(new_instruction->instruction == "CALL") {
-        new_instruction->slots = 3;
     } else {
-            new_instruction->offset = 0;
-        }
+        new_instruction->offset = 0;
+    }
+        if (strcmp(type, "SPUSHI") == 0) {
+            new_instruction->slots = 2;
+        } else if (strcmp(type, "CALL") == 0) {
+        new_instruction->slots = 3;
+        } else {
+        new_instruction->slots = 1;
+    }
     return new_instruction;
 }
 
@@ -156,9 +159,10 @@ void asm_parse_src(compilation_result * result, char * original_src){
             asm_is_num(token);
             if (asm_is_num(token)){
                 value = token;
-            } else {
+            } else if (!asm_is_num(token)){
                 label = token;
             }
+
             current_instruction = asm_make_instruction(instruction, label, label_reference, value, last_instruction);
             if(current_instruction > 928) {
                 result->error = ASM_ERROR_OUT_OF_RANGE;
@@ -227,7 +231,7 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 901;
     } else if (strcmp("OUT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 902;
-    } else if (strcmp("HALT", instruction->instruction) == 0) {
+    } else if (strcmp("HLT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000;
     } else if (strcmp("COB", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000;
