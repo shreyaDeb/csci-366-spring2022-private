@@ -25,7 +25,7 @@ Expected equality of these values:
 [  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
 [ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
 [       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
-[----------] 4 tests from instruction_construction (1 ms total)
+[----------] 4 tests from instruction_construction (0 ms total)
 
 [----------] 10 tests from parsing_tests
 [ RUN      ] parsing_tests.simple_instruction_parsing_works
@@ -33,7 +33,7 @@ Expected equality of these values:
 Value of: result->root == nullptr
   Actual: true
 Expected: false
-[  FAILED  ] parsing_tests.simple_instruction_parsing_works (0 ms)
+[  FAILED  ] parsing_tests.simple_instruction_parsing_works (1 ms)
 [ RUN      ] parsing_tests.two_instruction_parsing_works_w_space
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:68: Failure
 Value of: result->root == nullptr
@@ -70,7 +70,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_UNKNOWN_INSTRUCTION
-    Which is: 0x55adcf5c1f00
+    Which is: 0x55ce96cb9f00
 [  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
 [ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:127: Failure
@@ -78,7 +78,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_ARG_REQUIRED
-    Which is: 0x55adcf5c1f14
+    Which is: 0x55ce96cb9f14
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
 [ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:134: Failure
@@ -86,7 +86,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0x55adcf5c1f30
+    Which is: 0x55ce96cb9f30
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
 [ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:141: Failure
@@ -94,172 +94,61 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0x55adcf5c1f30
+    Which is: 0x55ce96cb9f30
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
-[----------] 10 tests from parsing_tests (0 ms total)
+[----------] 10 tests from parsing_tests (1 ms total)
 
 [----------] 28 tests from code_generation
 [ RUN      ] code_generation.add_instruction_generates_properly
 [       OK ] code_generation.add_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.sub_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:167: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  201
-[  FAILED  ] code_generation.sub_instruction_generates_properly (0 ms)
+[       OK ] code_generation.sub_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.store_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:179: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  301
-[  FAILED  ] code_generation.store_instruction_generates_properly (0 ms)
+[       OK ] code_generation.store_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.load_immediate_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:191: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  401
-[  FAILED  ] code_generation.load_immediate_instruction_generates_properly (0 ms)
+[       OK ] code_generation.load_immediate_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.load_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:203: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  501
-[  FAILED  ] code_generation.load_instruction_generates_properly (0 ms)
+[       OK ] code_generation.load_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.branch_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:215: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  601
-[  FAILED  ] code_generation.branch_instruction_generates_properly (0 ms)
+[       OK ] code_generation.branch_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.branch_if_zero_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:227: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  701
-[  FAILED  ] code_generation.branch_if_zero_instruction_generates_properly (0 ms)
+[       OK ] code_generation.branch_if_zero_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.branch_if_positive_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:239: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  801
-[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly (0 ms)
+[       OK ] code_generation.branch_if_positive_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.input_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:251: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  901
-[  FAILED  ] code_generation.input_instruction_generates_properly (0 ms)
+[       OK ] code_generation.input_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.out_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:263: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  902
-[  FAILED  ] code_generation.out_instruction_generates_properly (0 ms)
+[       OK ] code_generation.out_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.halt_instruction_generates_properly
 [       OK ] code_generation.halt_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.cob_instruction_generates_properly
 [       OK ] code_generation.cob_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.dat_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:299: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  001
-    Which is: 1
-[  FAILED  ] code_generation.dat_instruction_generates_properly (0 ms)
+[       OK ] code_generation.dat_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.spush_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:311: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  920
-[  FAILED  ] code_generation.spush_instruction_generates_properly (0 ms)
+[       OK ] code_generation.spush_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.spop_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:323: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  921
-[  FAILED  ] code_generation.spop_instruction_generates_properly (0 ms)
+[       OK ] code_generation.spop_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.sdup_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:335: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  922
-[  FAILED  ] code_generation.sdup_instruction_generates_properly (0 ms)
+[       OK ] code_generation.sdup_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.sadd_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:347: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  923
-[  FAILED  ] code_generation.sadd_instruction_generates_properly (0 ms)
+[       OK ] code_generation.sadd_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.ssub_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:359: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  924
-[  FAILED  ] code_generation.ssub_instruction_generates_properly (0 ms)
+[       OK ] code_generation.ssub_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.smax_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:371: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  925
-[  FAILED  ] code_generation.smax_instruction_generates_properly (0 ms)
+[       OK ] code_generation.smax_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.smin_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:383: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  926
-[  FAILED  ] code_generation.smin_instruction_generates_properly (0 ms)
+[       OK ] code_generation.smin_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.smul_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:395: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  927
-[  FAILED  ] code_generation.smul_instruction_generates_properly (0 ms)
+[       OK ] code_generation.smul_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.sdiv_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:407: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  928
-[  FAILED  ] code_generation.sdiv_instruction_generates_properly (0 ms)
+[       OK ] code_generation.sdiv_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.spushi_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:420: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  920
-[  FAILED  ] code_generation.spushi_instruction_generates_properly (0 ms)
+[       OK ] code_generation.spushi_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.call_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:435: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  920
-[  FAILED  ] code_generation.call_instruction_generates_properly (0 ms)
+[       OK ] code_generation.call_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.ret_instruction_generates_properly
-/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:449: Failure
-Expected equality of these values:
-  result->code[0]
-    Which is: 0
-  911
-[  FAILED  ] code_generation.ret_instruction_generates_properly (0 ms)
+[       OK ] code_generation.ret_instruction_generates_properly (0 ms)
 [ RUN      ] code_generation.instructions_next_to_one_another_generate_in_order_properly
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:466: Failure
 Expected equality of these values:
@@ -271,7 +160,7 @@ Expected equality of these values:
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:484: Failure
 Expected equality of these values:
   result->code[0]
-    Which is: 0
+    Which is: 1
   501
 [  FAILED  ] code_generation.labels_resolve_at_code_generation_time (0 ms)
 [ RUN      ] code_generation.bad_label_causes_error
@@ -280,7 +169,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0x55adcf5c1f26
+    Which is: 0x55ce96cb9f26
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
 [----------] 28 tests from code_generation (0 ms total)
 
@@ -357,7 +246,13 @@ Expected equality of these values:
 [ RUN      ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts
 [       OK ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
-[       OK ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
+/home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:278: Failure
+Expected equality of these values:
+  the_machine->accumulator->next
+    Which is: 0x7fb01e94ad20
+  nullptr
+    Which is: (nullptr)
+[  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
 [       OK ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts (0 ms)
 [ RUN      ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack
@@ -382,8 +277,8 @@ Expected equality of these values:
 
 [----------] Global test environment tear-down
 [==========] 82 tests from 5 test suites ran. (1 ms total)
-[  PASSED  ] 43 tests.
-[  FAILED  ] 39 tests, listed below:
+[  PASSED  ] 64 tests.
+[  FAILED  ] 18 tests, listed below:
 [  FAILED  ] instruction_construction.make_instruction_basic_instruction_fields_are_set
 [  FAILED  ] instruction_construction.make_instruction_spushi_takes_two_slots
 [  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots
@@ -397,31 +292,10 @@ Expected equality of these values:
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
-[  FAILED  ] code_generation.sub_instruction_generates_properly
-[  FAILED  ] code_generation.store_instruction_generates_properly
-[  FAILED  ] code_generation.load_immediate_instruction_generates_properly
-[  FAILED  ] code_generation.load_instruction_generates_properly
-[  FAILED  ] code_generation.branch_instruction_generates_properly
-[  FAILED  ] code_generation.branch_if_zero_instruction_generates_properly
-[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly
-[  FAILED  ] code_generation.input_instruction_generates_properly
-[  FAILED  ] code_generation.out_instruction_generates_properly
-[  FAILED  ] code_generation.dat_instruction_generates_properly
-[  FAILED  ] code_generation.spush_instruction_generates_properly
-[  FAILED  ] code_generation.spop_instruction_generates_properly
-[  FAILED  ] code_generation.sdup_instruction_generates_properly
-[  FAILED  ] code_generation.sadd_instruction_generates_properly
-[  FAILED  ] code_generation.ssub_instruction_generates_properly
-[  FAILED  ] code_generation.smax_instruction_generates_properly
-[  FAILED  ] code_generation.smin_instruction_generates_properly
-[  FAILED  ] code_generation.smul_instruction_generates_properly
-[  FAILED  ] code_generation.sdiv_instruction_generates_properly
-[  FAILED  ] code_generation.spushi_instruction_generates_properly
-[  FAILED  ] code_generation.call_instruction_generates_properly
-[  FAILED  ] code_generation.ret_instruction_generates_properly
 [  FAILED  ] code_generation.instructions_next_to_one_another_generate_in_order_properly
 [  FAILED  ] code_generation.labels_resolve_at_code_generation_time
 [  FAILED  ] code_generation.bad_label_causes_error
 [  FAILED  ] end_to_end.bootstrap
+[  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
 
-39 FAILED TESTS
+18 FAILED TESTS
