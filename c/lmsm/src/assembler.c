@@ -180,9 +180,11 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 000;
     } else if (strcmp("DAT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000 + value_for_instruction;
+    } else if (strcmp("SPUSHI", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 920;
+        result->code[instruction->offset + 1] = 401;
     } else if (strcmp("SPUSH", instruction->instruction) == 0) {
         result->code[instruction->offset] = 920;
-        result->code[instruction->offset+1] = 401;
     } else if (strcmp("SPOP", instruction->instruction) == 0) {
         result->code[instruction->offset] = 921;
     } else if (strcmp("SDUP", instruction->instruction) == 0) {
