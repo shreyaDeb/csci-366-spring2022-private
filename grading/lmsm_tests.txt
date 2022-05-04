@@ -22,10 +22,10 @@ Expected equality of these values:
   instruction->slots
     Which is: 0
   3
-[  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
+[  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots (1 ms)
 [ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
 [       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
-[----------] 4 tests from instruction_construction (0 ms total)
+[----------] 4 tests from instruction_construction (1 ms total)
 
 [----------] 10 tests from parsing_tests
 [ RUN      ] parsing_tests.simple_instruction_parsing_works
@@ -33,7 +33,7 @@ Expected equality of these values:
 Value of: result->root == nullptr
   Actual: true
 Expected: false
-[  FAILED  ] parsing_tests.simple_instruction_parsing_works (1 ms)
+[  FAILED  ] parsing_tests.simple_instruction_parsing_works (0 ms)
 [ RUN      ] parsing_tests.two_instruction_parsing_works_w_space
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:68: Failure
 Value of: result->root == nullptr
@@ -70,7 +70,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_UNKNOWN_INSTRUCTION
-    Which is: 0x55ce96cb9f00
+    Which is: 0x555a2ef33f00
 [  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
 [ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:127: Failure
@@ -78,7 +78,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_ARG_REQUIRED
-    Which is: 0x55ce96cb9f14
+    Which is: 0x555a2ef33f14
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
 [ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:134: Failure
@@ -86,7 +86,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0x55ce96cb9f30
+    Which is: 0x555a2ef33f30
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
 [ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/assembler.cpp:141: Failure
@@ -94,9 +94,9 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0x55ce96cb9f30
+    Which is: 0x555a2ef33f30
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
-[----------] 10 tests from parsing_tests (1 ms total)
+[----------] 10 tests from parsing_tests (0 ms total)
 
 [----------] 28 tests from code_generation
 [ RUN      ] code_generation.add_instruction_generates_properly
@@ -169,7 +169,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0x55ce96cb9f26
+    Which is: 0x555a2ef33f26
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
 [----------] 28 tests from code_generation (0 ms total)
 
@@ -249,7 +249,7 @@ Expected equality of these values:
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:278: Failure
 Expected equality of these values:
   the_machine->accumulator->next
-    Which is: 0x7fb01e94ad20
+    Which is: 0x7f7c6a337d20
   nullptr
     Which is: (nullptr)
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
