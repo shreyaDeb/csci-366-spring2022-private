@@ -44,14 +44,19 @@ instruction * asm_make_instruction(char* type, char *label, char *label_referenc
     new_instruction->label = label;
     new_instruction->label_reference = label_reference;
     new_instruction->value = value;
+    new_instruction->slots = 1;
+    new_instruction->offset = 1;
     new_instruction->next = NULL;
     if (predecessor != NULL) {
         predecessor->next = new_instruction;
         new_instruction->offset = predecessor->offset + predecessor->slots;
+    } else if(new_instruction->instruction == "SPUSHI"){
+        new_instruction->slots = 2;
+    } else if(new_instruction->instruction == "CALL") {
+        new_instruction->slots = 3;
     } else {
-        new_instruction->offset = 0;
-    }
-
+            new_instruction->offset = 0;
+        }
     return new_instruction;
 }
 
@@ -126,6 +131,54 @@ void asm_parse_src(compilation_result * result, char * original_src){
     instruction * last_instruction = NULL;
     instruction * current_instruction = NULL;
 
+    char *token = strtok(src, "\n");
+    while (token != NULL){
+        char *label = NULL;
+        if(!asm_is_instruction(token)){
+            //TODO: capture label
+            label = token;
+            token = strtok(NULL, "\n");
+        }
+        char *instruction = NULL;
+        if(!asm_is_instruction(token)){
+            result->error = ASM_ERROR_UNKNOWN_INSTRUCTION;
+            return;
+        } else {
+            instruction = token;
+        }
+
+        char * label_reference = NULL;
+        int value = 0;
+        if(asm_instruction_requires_arg(instruction)){
+            token = strtok(NULL, "\n");
+
+            //TODO: determine if arg is num or label
+            asm_is_num(token);
+            if (asm_is_num(token)){
+                value = token;
+            } else {
+                label = token;
+            }
+            current_instruction = asm_make_instruction(instruction, label, label_reference, value, last_instruction);
+            if(current_instruction > 928) {
+                result->error = ASM_ERROR_OUT_OF_RANGE;
+                return;
+            }
+            if(current_instruction < 0){
+                result->error = ASM_ERROR_OUT_OF_RANGE;
+                return;
+            }
+
+            if(result->root == NULL){
+                result->root = current_instruction;
+            }
+
+            last_instruction = current_instruction;
+
+            token = strtok(NULL, " \n");
+        }
+    }
+
     //TODO - generate a linked list of instructions and store the first into
     //       the result->root
     //
@@ -182,7 +235,7 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 000 + value_for_instruction;
     } else if (strcmp("SPUSHI", instruction->instruction) == 0) {
         result->code[instruction->offset] = 920;
-        result->code[instruction->offset + 1] = 401;
+        result->code[instruction->offset + 1] = 400 + value_for_instruction;
     } else if (strcmp("SPUSH", instruction->instruction) == 0) {
         result->code[instruction->offset] = 920;
     } else if (strcmp("SPOP", instruction->instruction) == 0) {
@@ -203,7 +256,7 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 928;
     } else if (strcmp("CALL", instruction->instruction) == 0) {
         result->code[instruction->offset] = 920;
-        result->code[instruction->offset+1] = 401;
+        result->code[instruction->offset+1] = 400 + value_for_instruction;
         result->code[instruction->offset+2] = 910;
     } else if (strcmp("RET", instruction->instruction) == 0) {
         result->code[instruction->offset] = 911;
