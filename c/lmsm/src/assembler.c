@@ -44,8 +44,6 @@ instruction * asm_make_instruction(char* type, char *label, char *label_referenc
     new_instruction->label = label;
     new_instruction->label_reference = label_reference;
     new_instruction->value = value;
-    new_instruction->slots = 1;
-    new_instruction->offset = 1;
     new_instruction->next = NULL;
     if (predecessor != NULL) {
         predecessor->next = new_instruction;
@@ -53,12 +51,13 @@ instruction * asm_make_instruction(char* type, char *label, char *label_referenc
     } else {
         new_instruction->offset = 0;
     }
-        if (strcmp(type, "SPUSHI") == 0) {
-            new_instruction->slots = 2;
-        } else if (strcmp(type, "CALL") == 0) {
+
+    if(strcmp(type, "SPUSHI") == 0){
+        new_instruction->slots = 2;
+    } else if(strcmp(type, "CALL") == 0){
         new_instruction->slots = 3;
-        } else {
-        new_instruction->slots = 1;
+    } else{
+        new_instruction->slots =1;
     }
     return new_instruction;
 }
@@ -137,7 +136,7 @@ void asm_parse_src(compilation_result * result, char * original_src){
     char* token = strtok(src, " \n");
     while(token != NULL){
 
-        char label = NULL;
+        char *label = NULL;
 
         if(!asm_is_instruction(token)){
             // capture label
@@ -145,7 +144,7 @@ void asm_parse_src(compilation_result * result, char * original_src){
             token = strtok(NULL, " \n");
         }
 
-        char instruction = NULL;
+        char * instruction = NULL;
         if(!asm_is_instruction(token)){
             result->error = ASM_ERROR_UNKNOWN_INSTRUCTION;
             return;
@@ -189,16 +188,6 @@ void asm_parse_src(compilation_result * result, char * original_src){
 
 }
 
-    //TODO - generate a linked list of instructions and store the first into
-    //       the result->root
-    //
-    //       generate the following errors as appropriate:
-    //
-    //       ASM_ERROR_UNKNOWN_INSTRUCTION - when an unknown instruction is encountered
-    //       ASM_ERROR_ARG_REQUIRED        - when an instruction does not have a proper argument passed to it
-    //       ASM_ERROR_OUT_OF_RANGE        - when a number argument is out of range (-999 to 999)
-    //
-    //       store the error in result->error
 
 //======================================================
 // Machine Code Generation
@@ -236,18 +225,24 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 901;
     } else if (strcmp("OUT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 902;
-    } else if (strcmp("HLT", instruction->instruction) == 0) {
+    } else if (strcmp("HALT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000;
     } else if (strcmp("COB", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000;
     } else if (strcmp("DAT", instruction->instruction) == 0) {
         result->code[instruction->offset] = 000 + value_for_instruction;
-    } else if (strcmp("SPUSHI", instruction->instruction) == 0) {
-        result->code[instruction->offset] = 920;
-        result->code[instruction->offset + 1] = 400 + value_for_instruction;
     } else if (strcmp("SPUSH", instruction->instruction) == 0) {
         result->code[instruction->offset] = 920;
-    } else if (strcmp("SPOP", instruction->instruction) == 0) {
+    }else if (strcmp("RET", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 911;
+    }else if (strcmp("SPUSHI", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 920;
+        result->code[instruction->offset + 1] = 401;
+    }else if (strcmp("CALL", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 920;
+        result->code[instruction->offset+1] = 401;
+        result->code[instruction->offset+2] = 910;
+    }else if (strcmp("SPOP", instruction->instruction) == 0) {
         result->code[instruction->offset] = 921;
     } else if (strcmp("SDUP", instruction->instruction) == 0) {
         result->code[instruction->offset] = 922;
@@ -263,15 +258,10 @@ void asm_gen_code_for_instruction(compilation_result  * result, instruction *ins
         result->code[instruction->offset] = 927;
     } else if (strcmp("SDIV", instruction->instruction) == 0) {
         result->code[instruction->offset] = 928;
-    } else if (strcmp("CALL", instruction->instruction) == 0) {
-        result->code[instruction->offset] = 920;
-        result->code[instruction->offset+1] = 400 + value_for_instruction;
-        result->code[instruction->offset+2] = 910;
-    } else if (strcmp("RET", instruction->instruction) == 0) {
-        result->code[instruction->offset] = 911;
     } else {
         result->code[instruction->offset] = 0;
     }
+
 }
 
 void asm_gen_code(compilation_result * result) {
