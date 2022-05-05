@@ -134,54 +134,60 @@ void asm_parse_src(compilation_result * result, char * original_src){
     instruction * last_instruction = NULL;
     instruction * current_instruction = NULL;
 
-    char *token = strtok(src, "\n");
-    while (token != NULL){
-        char *label = NULL;
+    char* token = strtok(src, " \n");
+    while(token != NULL){
+
+        char label = NULL;
+
         if(!asm_is_instruction(token)){
-            //TODO: capture label
+            // capture label
             label = token;
-            token = strtok(NULL, "\n");
+            token = strtok(NULL, " \n");
         }
-        char *instruction = NULL;
+
+        char instruction = NULL;
         if(!asm_is_instruction(token)){
             result->error = ASM_ERROR_UNKNOWN_INSTRUCTION;
             return;
-        } else {
+        } else{
             instruction = token;
         }
 
         char * label_reference = NULL;
         int value = 0;
-        if(asm_instruction_requires_arg(instruction)){
-            token = strtok(NULL, "\n");
 
-            //TODO: determine if arg is num or label
-            asm_is_num(token);
-            if (asm_is_num(token)){
-                value = token;
-            } else if (!asm_is_num(token)){
-                label = token;
-            }
-
-            current_instruction = asm_make_instruction(instruction, label, label_reference, value, last_instruction);
-            if(current_instruction > 928) {
-                result->error = ASM_ERROR_OUT_OF_RANGE;
-                return;
-            }
-            if(current_instruction < 0){
-                result->error = ASM_ERROR_OUT_OF_RANGE;
-                return;
-            }
-
-            if(result->root == NULL){
-                result->root = current_instruction;
-            }
-
-            last_instruction = current_instruction;
+        if (asm_instruction_requires_arg(instruction)){
 
             token = strtok(NULL, " \n");
+            if(token == NULL){
+                result->error = ASM_ERROR_ARG_REQUIRED;
+                return;
+            }
+
+            if(!asm_is_num(token)){
+                label_reference = token;
+            } else {
+                int x = atoi(token);
+                if(x >= -999 && x <= 999){
+                    value = x;
+                } else{
+                    result->error = ASM_ERROR_OUT_OF_RANGE;
+                    return;
+                }
+            }
         }
+
+        current_instruction = asm_make_instruction(instruction, label, label_reference, value, last_instruction);
+
+        if(result->root == NULL){
+            result->root = current_instruction;
+        }
+
+        last_instruction = current_instruction;
+        token = strtok(NULL, " \n");
     }
+
+}
 
     //TODO - generate a linked list of instructions and store the first into
     //       the result->root
@@ -193,7 +199,6 @@ void asm_parse_src(compilation_result * result, char * original_src){
     //       ASM_ERROR_OUT_OF_RANGE        - when a number argument is out of range (-999 to 999)
     //
     //       store the error in result->error
-}
 
 //======================================================
 // Machine Code Generation
