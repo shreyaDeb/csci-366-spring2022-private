@@ -101,7 +101,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0x5591276dbf26
+    Which is: 0x55defcd44f26
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
 [----------] 28 tests from code_generation (0 ms total)
 
@@ -171,7 +171,7 @@ Expected equality of these values:
 /home/carson/Projects/msu/csci-366-spring2022/grading/scripts/repos/shreya_deb/c/lmsm/googletest/lmsm.cpp:278: Failure
 Expected equality of these values:
   the_machine->accumulator->next
-    Which is: 0x7fe5cb283d20
+    Which is: 0x7ff259926d20
   nullptr
     Which is: (nullptr)
 [  FAILED  ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
