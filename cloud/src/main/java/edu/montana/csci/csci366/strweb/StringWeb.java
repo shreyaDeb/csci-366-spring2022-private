@@ -59,47 +59,51 @@ public class StringWeb {
                 if ("/".equals(path)) {
                     // Parse HTTP Headers
                     Map<String, String> headers = new HashMap<>();
-                    // TODO - parse request headers
                     String line;
-                    do{
+                    do {
                         line = inputReader.readLine();
-                        if(!line.isEmpty())
-                        {
+                        if(!line.isEmpty()) {
+                            //substring removes the space after colon
                             String[] split = line.split(":", 2);
-                            headers.put(split[0], split[1]);
+                            //put the values into the map
+                            headers.put(split[0], split[1].substring(1));
                         }
-                    } while (!line.isEmpty());
+                    } while(!line.isEmpty());
+
 
                     LOGGER.info("Headers : " + headers);
 
                     String strings = "";
-                    // TODO - parse request body
-                    if("POST".equals(method))
-                    {
-                       Map<String, String> parameters = new HashMap<>();
-                       if(headers.containsKey("Content-Length"))
-                       {
-                           int length = Integer.parseInt(headers.get("Content-Length"));
-                           char[] buffer = new char[length];
-                           inputReader.read(buffer, 0, length);
-                           String strBody = new String(buffer);
-                           System.out.println(strBody);
-                           for(String param : strBody.split("&"))
-                           {
-                               String[] split = param.split("=", 2);
-                               String name = split[0];
-                               String value = URLDecoder.decode(split[1], StandardCharsets.UTF_8);
-                               parameters.put(name, value);
-                           }
+                    if("POST".equals(method)) {
+                        //parameters passed can be stored in a new hash map
+                        Map<String, String> parameters = new HashMap<>();
+                        if(headers.containsKey("Content-Length")) {
+                            int length = Integer.parseInt(headers.get("Content-Length"));
+                            char[] buffer = new char[length];
+                            inputReader.read(buffer, 0, length);
+                            //buffer to string
+                            String strBody = new String(buffer);
+                            //form encoded string
+                            //& splits parameters
+                            for(String param : strBody.split("&")) {
+                                // = splits value and string
+                                String[] split = param.split("=", 2);
+                                String name = split[0];
+                                String value = URLDecoder.decode(split[1], StandardCharsets.UTF_8);
+                                parameters.put(name, value);
+                                //no substring needed because of no spaces
+                            }
+                        }
 
-                       }
-                       strings = parameters.get("string");
-                       if(parameters.containsKey("op")){
-                           strings = doOperation(parameters.get("op"), strings);
-                       }
+                        strings = parameters.get("strings");
+                        if(parameters.containsKey("op"))
+                        {
+                            strings = doOperation(parameters.get("op"), strings);
+                        }
+
                     }
 
-                    // build a response
+                    // building a response
                     if ("text/plain".equals(headers.get("Content-Type"))) {
                         renderTextPlain(response, strings);
                     } else {
@@ -180,7 +184,7 @@ public class StringWeb {
 
     private void renderResponseHeaders(StringBuilder response, String responseVals) {
         response.append("HTTP/1.1 ").append(responseVals).append("\n")
-                .append("MSU WebServer : 1.0\n")
+                .append("MSU-WebServer : 1.0\n")
                 .append("Date : ").append(new Date()).append("\n").append("\n");
     }
 
