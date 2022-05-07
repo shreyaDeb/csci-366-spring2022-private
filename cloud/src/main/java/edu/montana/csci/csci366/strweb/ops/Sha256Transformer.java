@@ -15,6 +15,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class Sha256Transformer {
     String[] _lines;
+
+    //only 10 threads at a time
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 
     public Sha256Transformer(String strings) {
@@ -23,9 +25,14 @@ public class Sha256Transformer {
 
     public String toSha256Hashes() {
 
+        //countdown latch that allows threads to finish
         CountDownLatch latch = new CountDownLatch(_lines.length);
+
+        //loops each line
         for(int i = 0; i < _lines.length; i++) {
             Sha256Computer sha256Computer = new Sha256Computer(i, latch);
+
+            //queues runnable to use thread with a max 10 threads
             executor.execute(sha256Computer);
         }
         //wait for all the threads to be done
@@ -34,6 +41,7 @@ public class Sha256Transformer {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        // outputs a string joined together
         return String.join("\n", _lines);
     }
 

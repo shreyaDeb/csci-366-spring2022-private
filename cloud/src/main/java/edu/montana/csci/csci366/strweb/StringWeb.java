@@ -58,8 +58,12 @@ public class StringWeb {
 
                 if ("/".equals(path)) {
                     // Parse HTTP Headers
+                    // TODO - parse request headers
+                    //collect all the values into hash map
                     Map<String, String> headers = new HashMap<>();
                     String line;
+
+                    //gets line from inputReader
                     do {
                         line = inputReader.readLine();
                         if(!line.isEmpty()) {
@@ -74,12 +78,20 @@ public class StringWeb {
                     LOGGER.info("Headers : " + headers);
 
                     String strings = "";
+
+                    //TODO - parse request body
+                    //check if current request is string
                     if("POST".equals(method)) {
                         //parameters passed can be stored in a new hash map
                         Map<String, String> parameters = new HashMap<>();
+
+                        //check header collected before for the length or body
                         if(headers.containsKey("Content-Length")) {
+                            //sets length = Content-Length
                             int length = Integer.parseInt(headers.get("Content-Length"));
+                            //char buffer into read content
                             char[] buffer = new char[length];
+                            //reads content into char buffer
                             inputReader.read(buffer, 0, length);
                             //buffer to string
                             String strBody = new String(buffer);
@@ -89,12 +101,15 @@ public class StringWeb {
                                 // = splits value and string
                                 String[] split = param.split("=", 2);
                                 String name = split[0];
+                                //removes the newline from the string
                                 String value = URLDecoder.decode(split[1], StandardCharsets.UTF_8);
+                                //adds to the paramters
                                 parameters.put(name, value);
                                 //no substring needed because of no spaces
                             }
                         }
 
+                        //test if op parameters exists
                         strings = parameters.get("strings");
                         if(parameters.containsKey("op"))
                         {
@@ -184,7 +199,7 @@ public class StringWeb {
 
     private void renderResponseHeaders(StringBuilder response, String responseVals) {
         response.append("HTTP/1.1 ").append(responseVals).append("\n")
-                .append("MSU-WebServer : 1.0\n")
+                .append("MSU WebServer : 1.0\n")
                 .append("Date : ").append(new Date()).append("\n").append("\n");
     }
 
